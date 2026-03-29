@@ -1,8 +1,9 @@
 <div class="courses-panel">
 
-  <h3>All Courses: {{values().join(' ,')}} </h3>
-
-  <button class="btn" (click) = "append()" >
+  <h3>All Courses: {{counter()}} </h3>
+  <h3>tenX counter : {{tenXCounter()}}</h3>
+  <h3>hunderedX counter : {{hundredXCounter()}}</h3>
+  <button class="btn" (click) = "increment()" >
     Add Course
   </button>
 

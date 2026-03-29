@@ -31,11 +31,16 @@ type Counter = {
   styleUrl: './home.component.scss',
 })
 export class HomeComponent {
-  //   counter = signal<number>(10).asReadonly();
-  //   counter = signal('Value');
+  counter = signal(0);
 
-  counter = signal<Counter>({
-    value: 100,
+  tenXCounter = computed(() => {
+    const val = this.counter();
+    return val * 10;
+  });
+
+  hundredXCounter = computed(() => {
+    const val = this.tenXCounter();
+    return val * 10;
   });
 
   values = signal<number[]>([1, 2, 3, 4, 5, 6]);
@@ -45,10 +50,7 @@ export class HomeComponent {
     // this.counter.update((counter) => counter + 1);
     // this.counter().value++; // worng way ( it will not work signal base change setection)
 
-    this.counter.update((counter) => ({
-      ...counter,
-      value: counter.value + 1,
-    }));
+    this.counter.update((val) => val + 1);
   }
 
   append() {
